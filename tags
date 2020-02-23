@@ -4,3 +4,34 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Country	app.py	/^class Country:$/;"	c
+FINAL_PERIOD	app.py	/^FINAL_PERIOD = 10$/;"	v
+FINAL_PRICE	app.py	/^FINAL_PRICE = 70$/;"	v
+INTEREST_RATE	app.py	/^INTEREST_RATE = 0.05$/;"	v
+OPEC_MAX_PRODUCTION	app.py	/^OPEC_MAX_PRODUCTION = sum([countries[name]._production_capacity for name in countries])$/;"	v
+__init__	app.py	/^    def __init__(self, name, total_reserves, production_capacity, marginal_cost):$/;"	m	class:Country
+barrel_value	app.py	/^def barrel_value(day, country):$/;"	f
+countries	app.py	/^countries = {$/;"	v
+example_country	app.py	/^example_country = st.selectbox("Country", list(countries.keys()))$/;"	v
+example_day	app.py	/^example_day   = st.slider("Day", 1, 10)$/;"	v
+example_demand	app.py	/^example_demand = st.selectbox("Demand Curve:", ("Low", "High"))$/;"	v
+example_price	app.py	/^example_price = st.slider("Price\/Barrel", 0, 300)$/;"	v
+high_price	app.py	/^high_price = np.array([$/;"	v
+high_row_production	app.py	/^high_row_production = np.array([$/;"	v
+high_world_production	app.py	/^high_world_production = np.array([$/;"	v
+low_price	app.py	/^low_price =  np.array([$/;"	v
+low_row_production	app.py	/^low_row_production = np.array([$/;"	v
+low_world_production	app.py	/^low_world_production = np.array([$/;"	v
+min_price	app.py	/^def min_price(day, country):$/;"	f
+opec_supply	app.py	/^opec_supply = st.slider("OPEC Supply", 0, 40000)$/;"	v
+p_high	app.py	/^p_high = np.polyfit(high_world_production, high_price, 1)$/;"	v
+p_low	app.py	/^p_low = np.polyfit(low_world_production, low_price, 1)$/;"	v
+p_row	app.py	/^p_row = np.polyfit(row_production, row_price, 1)$/;"	v
+plot_barrel_value	app.py	/^def plot_barrel_value(country):$/;"	f
+plot_countries_min_price	app.py	/^def plot_countries_min_price(day):$/;"	f
+plot_countries_profit	app.py	/^def plot_countries_profit(price, day):$/;"	f
+price	app.py	/^price = 1\/(1 - p_demand[0] \/ p_row[0]) * (-p_demand[0]*p_row[1]\/p_row[0] + p_demand[0]*opec_supply + p_demand[1])$/;"	v
+production_values	app.py	/^production_values = np.linspace(40000, 85000)$/;"	v
+profit_at_price	app.py	/^def profit_at_price(price, day, country):$/;"	f
+row_price	app.py	/^row_price      = np.hstack((low_price, high_price))$/;"	v
+row_production	app.py	/^row_production = np.hstack((low_row_production, high_row_production))$/;"	v

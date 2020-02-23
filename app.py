@@ -138,10 +138,9 @@ st.pyplot()
 
 ### Simulated Demand Curves
 
-opec_supply = 15000
-f"## OPEC Supply: {opec_supply} barrels"
-
-p_demand = p_low
+opec_supply = st.slider("OPEC Supply", 0, 40000)
+example_demand = st.selectbox("Demand Curve:", ("Low", "High"))
+p_demand = p_low if example_demand == "Low" else p_high
 
 production_values = np.linspace(40000, 85000)
 
@@ -196,7 +195,9 @@ def plot_barrel_value(country):
     plt.ylabel("Present Value")
     st.pyplot()
 
-plot_barrel_value("Saudi Arabia")
+example_country = st.selectbox("Country", list(countries.keys()))
+
+plot_barrel_value(example_country)
 
 OPEC_MAX_PRODUCTION = sum([countries[name]._production_capacity for name in countries])
 f"### OPEC Max Production: {OPEC_MAX_PRODUCTION} barrels"
@@ -227,7 +228,10 @@ def plot_countries_profit(price, day):
     plt.xticks(y_pos, country_names)
     plt.title(f"Country Profits at Price ${price:0.2f}")
 
-plot_countries_profit(100, 1)
+example_price = st.slider("Price/Barrel", 0, 300)
+example_day   = st.slider("Day", 1, 10)
+
+plot_countries_profit(example_price, example_day)
 #  plt.legend()
 st.pyplot()
 
