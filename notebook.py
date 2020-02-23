@@ -139,7 +139,7 @@ st.pyplot()
 ### Simulated Demand Curves
 
 opec_supply = 15000
-f"## OPEC Supply: {opec_supply}"
+f"## OPEC Supply: {opec_supply} barrels"
 
 p_demand = p_low
 
@@ -183,6 +183,8 @@ def barrel_value(day, country):
     present_value = final_sale_value / (1 + INTEREST_RATE)**(FINAL_PERIOD - day)
     return present_value
 
+def min_price(day, country):
+    return barrel_value(day, country) + country._marginal_cost
 
 def plot_barrel_value(country):
     periods = [i+1 for i in range(FINAL_PERIOD)]
@@ -197,19 +199,35 @@ def plot_barrel_value(country):
 plot_barrel_value("Saudi Arabia")
 
 OPEC_MAX_PRODUCTION = sum([countries[name]._production_capacity for name in countries])
-f"### OPEC Max Production: {OPEC_MAX_PRODUCTION}"
+f"### OPEC Max Production: {OPEC_MAX_PRODUCTION} barrels"
 
-def countries_min_price(day):
+def plot_countries_min_price(day):
     country_names = list(countries.keys())
-    marginal_costs = [barrel_value(day, countries[name]) + countries[name]._marginal_cost for name in countries]
+    min_prices = [min_price(day, countries[name]) for name in countries]
     y_pos = np.arange(len(country_names))
-    plt.bar(y_pos, marginal_costs, label=f"Day {day}")
+    plt.bar(y_pos, min_prices, label=f"Day {day}")
     plt.xticks(y_pos, country_names)
     plt.ylim(40, 80)
-    plt.title(f"Country Minmum Price")
+    plt.title(f"Country Minimum Price")
 
-countries_min_price(10)
-countries_min_price(1)
+plot_countries_min_price(10)
+plot_countries_min_price(1)
 plt.legend()
+st.pyplot()
+
+## Simulate Profit
+def profit_at_price(price, day, country):
+    return price - min_price(day, country)
+
+def plot_countries_profit(price, day):
+    country_names = list(countries.keys())
+    profits = [profit_at_price(price, day, countries[name]) for name in countries]
+    y_pos = np.arange(len(country_names))
+    plt.bar(y_pos, profits, label=f"Day {day}")
+    plt.xticks(y_pos, country_names)
+    plt.title(f"Country Profits at Price ${price:0.2f}")
+
+plot_countries_profit(100, 1)
+#  plt.legend()
 st.pyplot()
 
