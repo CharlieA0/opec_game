@@ -234,6 +234,5 @@ example_price = st.slider("Price/Barrel", 0, 300)
 example_day   = st.slider("Day", 1, 10, key="profit_day")
 
 plot_countries_profit(example_price, example_day)
-#  plt.legend()
 st.pyplot()
 
