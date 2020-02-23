@@ -211,8 +211,10 @@ def plot_countries_min_price(day):
     plt.ylim(40, 80)
     plt.title(f"Country Minimum Price")
 
+example_day = st.slider("Day", 1, 10)
+
 plot_countries_min_price(10)
-plot_countries_min_price(1)
+plot_countries_min_price(example_day)
 plt.legend()
 st.pyplot()
 
